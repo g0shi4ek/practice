@@ -49,3 +49,4 @@
 *build
 *cmake-build-debug
 *main.dSYM
+/.vs/practice/v17/Browse.VC.db
