@@ -1,6 +1,51 @@
-﻿################################################################################
-# Данный GITIGNORE-файл был автоматически создан Microsoft(R) Visual Studio.
-################################################################################
+﻿# Prerequisites
+*.d
 
-/.vs/practice/FileContentIndex
-/.vs/practice/v17/ipch/AutoPCH
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# macOS
+*.DS_Store
+*.AppleDouble
+*.LSOverride
+
+# C extensions
+*.so
+
+# IDE
+*.vscode
+*.vs
+*x64
+*.idea
+
+# CMake
+*build
+*cmake-build-debug
+*main.dSYM

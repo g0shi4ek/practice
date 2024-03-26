@@ -4,5 +4,6 @@ using namespace std;
 
 int main() {
 	setlocale(LC_ALL, "Russian");
-	cout << "yes, and?" << endl;
+	cout << "yes, and???" << endl;
+
 }
