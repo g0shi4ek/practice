@@ -1,16 +1,10 @@
-#include <iostream>
 #include <SFML/Graphics.hpp>
+#include "menu.h"
+using namespace sf;
 
-using namespace std;
-
-int main() {
-	setlocale(LC_ALL, "Russian");
-	cout << "yes, and???" << endl;
-	cout << "no, and??? " << endl;
-
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+int main()
+{
+    sf::RenderWindow window(sf::VideoMode(1500, 844), "My window");
 
     while (window.isOpen())
     {
@@ -21,8 +15,14 @@ int main() {
                 window.close();
         }
 
-        window.clear();
-        window.draw(shape);
+        window.clear(sf::Color::Black);
+
+        
+        backscreen(window);
+        MenuText(window);
         window.display();
+
     }
+
+    return 0;
 }
