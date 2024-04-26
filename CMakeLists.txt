@@ -11,7 +11,10 @@ FetchContent_Declare(SFML
     GIT_TAG 2.6.x)
 FetchContent_MakeAvailable(SFML)
 
-add_executable(practice main.cpp "menu.cpp" "menu.h")
+add_executable(practice main.cpp "menu.cpp" "menu.h"
+        "buttons.cpp"
+        "buttons.h")
+
 target_link_libraries(practice PRIVATE sfml-graphics)
 target_compile_features(practice PRIVATE cxx_std_17)
 
