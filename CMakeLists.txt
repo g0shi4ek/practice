@@ -13,7 +13,11 @@ FetchContent_MakeAvailable(SFML)
 
 add_executable(practice main.cpp "menu.cpp" "menu.h"
         "buttons.cpp"
-        "buttons.h")
+        "buttons.h"
+        "typeLevel.cpp" 
+        "typeLevel.h" 
+        "task.cpp"
+        "task.h" "end.cpp" "end.h")
 
 target_link_libraries(practice PRIVATE sfml-graphics)
 target_compile_features(practice PRIVATE cxx_std_17)

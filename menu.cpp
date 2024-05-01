@@ -2,26 +2,35 @@
 #include "menu.h"
 #include "buttons.h"
 
-
 using namespace sf;
 using namespace std;
 
-void Menu::MenuText(RenderWindow& window) {
-
-    /*Font font;
+int Menu::choice(RenderWindow& window , Vector2i pos_mouse , bool mouse_pr) {
+    Font font;
     font.loadFromFile("C:\\Users\\dassa\\CLionProjects\\practice\\VividSans-Regular.ttf");
-    Text text;
-    text.setFont(font);
-    text.setString("Hello world! Great to see you!");
-    text.setCharacterSize(40);
-    text.setFillColor(sf::Color::White);
-    text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+    Message t((string)"Menu", false);
+    t.setFont(font);
+    t.setPos({ 550,100 });
+    t.print(window);
+    Button but1(font, (string)"Start", {200,60}, {500, 200}, Color(255, 255, 255), pos_mouse); // нужно высчитать правильное расположение кнопки на окне
+    Button but2(font, (string)"Finish game", { 200,60 }, { 500, 300 }, Color(255, 255, 255), pos_mouse);
+    but1.print(window);
+    but2.print(window);
 
-    text.setPosition(350.f, 300.f);
-    window.draw(text);*/
-    string a = "hiho";
-    Button but(100, 100, 200, 200, a, false);
-    but.print(window);
+
+    if (mouse_pr == true && but1.isMouse(pos_mouse) == true) {
+        window.close();
+        this->state = 1;
+        mouse_pr = false;
+        return 0;
+    }
+
+    if (mouse_pr == true && but2.isMouse(pos_mouse) == true) {
+        window.close();
+        this->state = 2;
+        mouse_pr = false;
+        return 0;
+    }
 }
 
 void Menu::backscreen(RenderWindow& window) {

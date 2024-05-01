@@ -1,57 +1,53 @@
-#ifndef MENU_H // include guard
+#ifndef TYPELEVEL_H // include guard
 #include "SFML/Graphics.hpp"
-#define MENU_H
+#define TYPELEVEL_H
 #include <iostream>
+#include "menu.h"
+#include "buttons.h"
 
 using namespace std;
 using namespace sf;
 
-
-class Menu{
+class Menu;
+class TypeLevel: public Menu { // какая-то проблема с наследованием почему-то если конструктор чисто от меню брать то не работает переключение на новое окно
     int state = 0;
 public:
-    Menu(){
+    TypeLevel() {
         RenderWindow window(VideoMode(1500, 844), "My window");
         Vector2i pos_mouse;
+        state = 0;
 
         while (window.isOpen())
         {
-            bool mouse_pr = false;
             Event event{};
+            bool mouse_pr = false;
             while (window.pollEvent(event))
             {
 
-                pos_mouse = Mouse::getPosition(window); //координаты мыши
-
+                pos_mouse = Mouse::getPosition(window); //координаты мышки
                 if (event.type == Event::MouseButtonPressed) // проверка нажата ли кнопка мыши
                 {
                     Mouse::Button mouseButton = event.mouseButton.button;
                     mouse_pr = true;
                 }
-                //cout << pos_mouse.x << "-" << pos_mouse.y << endl;
                 if (event.type == Event::Closed)
                     window.close();
 
             }
- 
             window.clear(Color::Black);
             backscreen(window);
             choice(window, pos_mouse, mouse_pr);
             window.display();
-            
         }
-    }
-    virtual void backscreen(RenderWindow& window);
-    virtual int choice(RenderWindow& window , Vector2i pos_mouse, bool mouse_pr);
+    };
+
+
+    int choice(RenderWindow& window, Vector2i pos_mouse, bool mouse_pr) override;
+    void backscreen(RenderWindow& window) override;
 
     int getState() {
         return this->state;
     }
-
-    void setState(int s) {
-        this->state = s;
-    }
-
 };
 
-#endif MENU_H
+#endif TYPELEVEL_H

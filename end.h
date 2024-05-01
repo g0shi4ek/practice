@@ -1,16 +1,25 @@
-#ifndef MENU_H // include guard
+#ifndef END_H // include guard
 #include "SFML/Graphics.hpp"
-#define MENU_H
+#define END_H
 #include <iostream>
+#include <vector>
 
 using namespace std;
 using namespace sf;
 
+class End {
+    int numbers = 0;
+    int all = 0;
 
-class Menu{
-    int state = 0;
 public:
-    Menu(){
+    End() {};
+
+    End(int sc, int al) {
+        this->numbers = sc; // кол-во решенных номеров
+        this->all = al; // кол-во номеров всего
+    }
+
+    void play() {
         RenderWindow window(VideoMode(1500, 844), "My window");
         Vector2i pos_mouse;
 
@@ -20,7 +29,6 @@ public:
             Event event{};
             while (window.pollEvent(event))
             {
-
                 pos_mouse = Mouse::getPosition(window); //координаты мыши
 
                 if (event.type == Event::MouseButtonPressed) // проверка нажата ли кнопка мыши
@@ -33,25 +41,18 @@ public:
                     window.close();
 
             }
- 
-            window.clear(Color::Black);
-            backscreen(window);
-            choice(window, pos_mouse, mouse_pr);
+
+            window.clear(Color::Red);
+            //backscreen(window);
+            screen(window, mouse_pr);
             window.display();
-            
         }
     }
-    virtual void backscreen(RenderWindow& window);
-    virtual int choice(RenderWindow& window , Vector2i pos_mouse, bool mouse_pr);
+    //void backscreen(RenderWindow& window);
+    void screen(RenderWindow& window, bool mouse_pr);
 
-    int getState() {
-        return this->state;
-    }
 
-    void setState(int s) {
-        this->state = s;
-    }
 
 };
 
-#endif MENU_H
+#endif MATHTASK_H

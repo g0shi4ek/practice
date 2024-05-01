@@ -76,6 +76,33 @@ build CMakeFiles\practice.dir\buttons.cpp.obj: CXX_COMPILER__practice_unscanned_
   TARGET_COMPILE_PDB = CMakeFiles\practice.dir\
   TARGET_PDB = bin\practice.pdb
 
+build CMakeFiles\practice.dir\typeLevel.cpp.obj: CXX_COMPILER__practice_unscanned_Debug C$:\Users\dassa\CLionProjects\practice\typeLevel.cpp || cmake_object_order_depends_target_practice
+  DEFINES = -DSFML_STATIC
+  FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd
+  INCLUDES = -IC:\Users\dassa\CLionProjects\practice\out\build\x64-Debug\_deps\sfml-src\include
+  OBJECT_DIR = CMakeFiles\practice.dir
+  OBJECT_FILE_DIR = CMakeFiles\practice.dir
+  TARGET_COMPILE_PDB = CMakeFiles\practice.dir\
+  TARGET_PDB = bin\practice.pdb
+
+build CMakeFiles\practice.dir\task.cpp.obj: CXX_COMPILER__practice_unscanned_Debug C$:\Users\dassa\CLionProjects\practice\task.cpp || cmake_object_order_depends_target_practice
+  DEFINES = -DSFML_STATIC
+  FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd
+  INCLUDES = -IC:\Users\dassa\CLionProjects\practice\out\build\x64-Debug\_deps\sfml-src\include
+  OBJECT_DIR = CMakeFiles\practice.dir
+  OBJECT_FILE_DIR = CMakeFiles\practice.dir
+  TARGET_COMPILE_PDB = CMakeFiles\practice.dir\
+  TARGET_PDB = bin\practice.pdb
+
+build CMakeFiles\practice.dir\end.cpp.obj: CXX_COMPILER__practice_unscanned_Debug C$:\Users\dassa\CLionProjects\practice\end.cpp || cmake_object_order_depends_target_practice
+  DEFINES = -DSFML_STATIC
+  FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd
+  INCLUDES = -IC:\Users\dassa\CLionProjects\practice\out\build\x64-Debug\_deps\sfml-src\include
+  OBJECT_DIR = CMakeFiles\practice.dir
+  OBJECT_FILE_DIR = CMakeFiles\practice.dir
+  TARGET_COMPILE_PDB = CMakeFiles\practice.dir\
+  TARGET_PDB = bin\practice.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target practice
@@ -84,7 +111,7 @@ build CMakeFiles\practice.dir\buttons.cpp.obj: CXX_COMPILER__practice_unscanned_
 #############################################
 # Link the executable bin\practice.exe
 
-build bin\practice.exe: CXX_EXECUTABLE_LINKER__practice_Debug CMakeFiles\practice.dir\main.cpp.obj CMakeFiles\practice.dir\menu.cpp.obj CMakeFiles\practice.dir\buttons.cpp.obj | _deps\sfml-build\lib\sfml-graphics-s-d.lib _deps\sfml-build\lib\sfml-window-s-d.lib _deps\sfml-build\lib\sfml-system-s-d.lib _deps\sfml-src\extlibs\libs-msvc-universal\x64\freetype.lib || _deps\sfml-build\lib\sfml-graphics-s-d.lib _deps\sfml-build\lib\sfml-system-s-d.lib _deps\sfml-build\lib\sfml-window-s-d.lib
+build bin\practice.exe: CXX_EXECUTABLE_LINKER__practice_Debug CMakeFiles\practice.dir\main.cpp.obj CMakeFiles\practice.dir\menu.cpp.obj CMakeFiles\practice.dir\buttons.cpp.obj CMakeFiles\practice.dir\typeLevel.cpp.obj CMakeFiles\practice.dir\task.cpp.obj CMakeFiles\practice.dir\end.cpp.obj | _deps\sfml-build\lib\sfml-graphics-s-d.lib _deps\sfml-build\lib\sfml-window-s-d.lib _deps\sfml-build\lib\sfml-system-s-d.lib _deps\sfml-src\extlibs\libs-msvc-universal\x64\freetype.lib || _deps\sfml-build\lib\sfml-graphics-s-d.lib _deps\sfml-build\lib\sfml-system-s-d.lib _deps\sfml-build\lib\sfml-window-s-d.lib
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = _deps\sfml-build\lib\sfml-graphics-s-d.lib  _deps\sfml-build\lib\sfml-window-s-d.lib  _deps\sfml-build\lib\sfml-system-s-d.lib  opengl32.lib  winmm.lib  gdi32.lib  legacy_stdio_definitions.lib  _deps\sfml-src\extlibs\libs-msvc-universal\x64\freetype.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
