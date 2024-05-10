@@ -5,18 +5,46 @@
 using namespace sf;
 using namespace std;
 
+TypeLevel::TypeLevel() {
+    RenderWindow window(VideoMode(1152, 896), "My window");
+    Vector2i pos_mouse;
+    state = 0;
+    while (window.isOpen())
+    {
+        Event event{};
+        bool mouse_pr = false;
+        while (window.pollEvent(event))
+        {
+
+            pos_mouse = Mouse::getPosition(window); //координаты мышки
+            if (event.type == Event::MouseButtonPressed) // проверка нажата ли кнопка мыши
+            {
+                Mouse::Button mouseButton = event.mouseButton.button;
+                mouse_pr = true;
+            }
+            if (event.type == Event::Closed)
+                window.close();
+
+        }
+        window.clear(Color::Black);
+        backscreen(window);
+        choice(window, pos_mouse, mouse_pr);
+        window.display();
+    }
+}
+
 int TypeLevel::choice(RenderWindow& window, Vector2i pos_mouse, bool mouse_pr) {
     Font font;
-    font.loadFromFile("C:\\Users\\dassa\\CLionProjects\\practice\\VividSans-Regular.ttf");
-    Message t((string)"Choose the subject", false);
+    font.loadFromFile("resources\\Lineyka.ttf");
+    Message t((string)"Choose the subject", false, 2);
     t.setFont(font);
-    t.setPos({ 550,100 });
+    t.setPos({ 576 - t.getTxt().getGlobalBounds().width / 2,100});
     t.print(window);
 
-    Button type1(font, (string)"Russian", { 200,60 }, { 500, 200 }, Color(255, 255, 255), pos_mouse);
-    Button type2(font, (string)"English", { 200,60 }, { 500, 300 }, Color(255, 255, 255), pos_mouse);
-    Button type3(font, (string)"Math", { 200,60 }, { 500, 400 }, Color(255, 255, 255), pos_mouse);
-    Button type4(font, (string)"Return to menu", { 400,60 }, { 500, 500 }, Color(255, 255, 255), pos_mouse);
+    Button type1(font, (string)"Russian", { 200,60 }, { 475, 200 }, Color(255, 255, 255, 965), pos_mouse);
+    Button type2(font, (string)"English", { 200,60 }, { 475, 300 }, Color(255, 255, 255, 965), pos_mouse);
+    Button type3(font, (string)"Math", { 200,60 }, { 475, 400 }, Color(255, 255, 255, 965), pos_mouse);
+    Button type4(font, (string)"Return to menu", { 400,60 }, { 380, 500 }, Color(255, 255, 255, 965), pos_mouse);
 
     type1.print(window);
     type2.print(window);
@@ -50,7 +78,7 @@ int TypeLevel::choice(RenderWindow& window, Vector2i pos_mouse, bool mouse_pr) {
 
 void TypeLevel::backscreen(RenderWindow& window) { // тут если менять картинку начальную
     Texture herotexture;
-    herotexture.loadFromFile("C:\\Users\\dassa\\CLionProjects\\practice\\menu_pic.jpg");
+    herotexture.loadFromFile("resources\\images\\menu_back.jpg");
 
     Sprite herosprite;
     herosprite.setTexture(herotexture);

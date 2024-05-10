@@ -22,39 +22,9 @@ public:
         this->right = right;
     }
 
-    void play() {
-        RenderWindow window(VideoMode(1500, 844), "My window");
-        Vector2i pos_mouse;
-
-        while (window.isOpen())
-        {
-            bool mouse_pr = false;
-            Event event{};
-            while (window.pollEvent(event))
-            {
-
-                pos_mouse = Mouse::getPosition(window); //координаты мыши
-
-                if (event.type == Event::MouseButtonPressed) // проверка нажата ли кнопка мыши
-                {
-                    Mouse::Button mouseButton = event.mouseButton.button;
-                    mouse_pr = true;
-                }
-                //cout << pos_mouse.x << "-" << pos_mouse.y << endl;
-                if (event.type == Event::Closed)
-                    window.close();
-
-            }
-
-            window.clear(Color::Red);
-            //backscreen(window);
-            variants(window, pos_mouse, mouse_pr, this->answers, this->right);
-            question(window, this->answers);
-            window.display();
-        }
-    }
-    void backscreen(RenderWindow& window) ;
-    int variants(RenderWindow& window, Vector2i pos_mouse, bool mouse_pr, vector<string> ans, int right);
+    void virtual play(int type);
+    void backscreen(RenderWindow& window, int type) ;
+    int virtual variants(RenderWindow& window, Vector2i pos_mouse, bool mouse_pr, vector<string> ans, int right);
     void question(RenderWindow& window, vector<string> ans);
 
 

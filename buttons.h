@@ -13,7 +13,7 @@ class Message{
     Text txt;
 public:
     Message() {};
-    Message(string& t, bool f);
+    Message(string& t, bool f, int ms_type);
     ~Message() {};
 
     void print(RenderWindow& window);

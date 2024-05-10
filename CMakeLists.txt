@@ -17,7 +17,14 @@ add_executable(practice main.cpp "menu.cpp" "menu.h"
         "typeLevel.cpp" 
         "typeLevel.h" 
         "task.cpp"
-        "task.h" "end.cpp" "end.h")
+        "task.h" "end.cpp" "end.h"  )
+
+
+add_custom_command(TARGET practice POST_BUILD
+                   COMMAND ${CMAKE_COMMAND} -E copy_directory
+                           ${CMAKE_CURRENT_SOURCE_DIR}/resources
+                           $<TARGET_FILE_DIR:practice>/resources)
+
 
 target_link_libraries(practice PRIVATE sfml-graphics)
 target_compile_features(practice PRIVATE cxx_std_17)

@@ -1,24 +1,21 @@
 #include "buttons.h"
 
-Message::Message(string& t, bool f) {
-    if (f == false) { //настройки текста если нет курсора (не трогайте все что связано со шрифтом оно оч странно работает)
-        Font font;
-        font.loadFromFile("C:\\Users\\dassa\\CLionProjects\\practice\\VividSans-Regular.ttf");
-        txt.setString(t);
-        txt.setFillColor(Color::Black);
+Message::Message(string& t, bool f, int ms_type) {
+    Font font;
+    font.loadFromFile("resources\\Lineyka.ttf");
+    txt.setString(t);
+    if (ms_type == 1) {
+        txt.setFillColor(Color(5, 8, 94));
         txt.setCharacterSize(40);
         txt.setStyle(Text::Bold);
         flag = f;
     }
-
-    else { // настройки текста если курсор наведен
-        Font font;
-        font.loadFromFile("C:\\Users\\dassa\\CLionProjects\\practice\\VividSans-Regular.ttf");
-        txt.setFont(font);
-        txt.setString(t);
-        txt.setFillColor(Color::White);
-        txt.setCharacterSize(40);
-        txt.setStyle(Text::Bold | Text::Underlined);
+    else {
+        txt.setFillColor(Color(5, 8, 94));
+        txt.setCharacterSize(60);
+        txt.setStyle(Text::Bold);
+        txt.setOutlineColor(Color(216, 237, 255));
+        txt.setOutlineThickness(1);
         flag = f;
     }
 }
@@ -44,15 +41,15 @@ Button::Button(Font& font, string& t, Vector2f size_btn, Vector2f pos_btn, Color
     btn.setPosition(pos_btn);
     btn.setFillColor(bgcolor);
 
-    Message elem(t, isMouse(pos_mouse));
+    Message elem(t, isMouse(pos_mouse), 1);
     elem.setFont(font);
     setPostext(size_btn, pos_btn, elem);
     text = elem;
 }
 
 void Button::setPostext(Vector2f size_btn, Vector2f pos_btn, Message& el) { //для того чтобы текст был посередине мб надо поменять
-    float xPos = (pos_btn.x + btn.getGlobalBounds().width / 2) - (el.getTxt().getGlobalBounds().width / 2);
-    float yPos = (pos_btn.y + btn.getGlobalBounds().height / 2) - (el.getTxt().getGlobalBounds().height / 2);
+    float xPos = (pos_btn.x + btn.getLocalBounds().width / 2) - (el.getTxt().getLocalBounds().width / 2);
+    float yPos = (pos_btn.y + btn.getLocalBounds().height / 2) - (el.getTxt().getLocalBounds().height / 1.5);
 
     el.setPos({ xPos,yPos });
 }
@@ -63,14 +60,14 @@ void Button::setBgcolor(Color bgcolor) {
 
 bool Button::isMouse(Vector2i mouse_pos) {
 
-    float btn_x1 = btn.getPosition().x; //начальные координаты кнопки 500
+    float btn_x1 = btn.getPosition().x; //начальные координаты кнопки 
     float btn_y1 = btn.getPosition().y;
 
     float btn_x2 = btn.getPosition().x + btn.getGlobalBounds().width; //конечные координаты кнопки 
     float btn_y2 = btn.getPosition().y + btn.getGlobalBounds().height;
 
     if (mouse_pos.x > btn_x1 && mouse_pos.x < btn_x2 && mouse_pos.y > btn_y1 && mouse_pos.y < btn_y2) {
-        setBgcolor(Color::Black);// цвет наведенной кнопки
+        setBgcolor(Color(255, 255, 255));// цвет наведенной кнопки
         return true;
     }
     return false;
