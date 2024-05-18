@@ -9,17 +9,14 @@ using namespace std;
 using namespace sf;
 
 class Menu;
-class TypeLevel { // какая-то проблема с наследованием почему-то если конструктор чисто от меню брать то не работает переключение на новое окно
-    // я убрала наследование, так как оно особо не нужно, но из-за него надо было дважды тыкать на старт
-    int state = 0;
+
+class TypeLevel : public Menu { 
+    int subject_state = 0;
 public:
-    TypeLevel();
-
-    int choice(RenderWindow& window, Vector2i pos_mouse, bool mouse_pr);
-    void backscreen(RenderWindow& window);
-
-    int getState() {
-        return this->state;
+    int choice(RenderWindow& window, Vector2i pos_mouse, bool mouse_pr) override;
+ 
+    int getSubjectState() {
+        return this->subject_state;
     }
 };
 

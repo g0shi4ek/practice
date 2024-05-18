@@ -5,7 +5,7 @@
 using namespace sf;
 using namespace std;
 
-Menu::Menu() {
+void Menu::play() {
     RenderWindow window(VideoMode(1152, 896), "My window");
     Vector2i pos_mouse;
     while (window.isOpen())
@@ -28,10 +28,14 @@ Menu::Menu() {
         }
 
         window.clear(Color::Black);
-        backscreen(window);
-        choice(window, pos_mouse, mouse_pr);
+        actions(window, pos_mouse, mouse_pr);
         window.display();
     }
+}
+
+void Menu::actions(RenderWindow& window, Vector2i pos_mouse, bool mouse_pr) {
+    backscreen(window, "menu_back.jpg");
+    choice(window, pos_mouse, mouse_pr);
 }
 
 int Menu::choice(RenderWindow& window , Vector2i pos_mouse , bool mouse_pr) {
@@ -42,11 +46,10 @@ int Menu::choice(RenderWindow& window , Vector2i pos_mouse , bool mouse_pr) {
     t.setFont(font);
     t.setPos({ 576 - t.getTxt().getLocalBounds().width / 2,100});
     t.print(window);
-    Button but1(font, (string)"Start", {250,70}, {450, 200}, Color(255, 255, 255, 965), pos_mouse); // нужно высчитать правильное расположение кнопки на окне | ИСПРАВЛЕНО
-    Button but2(font, (string)"Finish game", { 250, 70 }, { 450, 300 }, Color(255, 255, 255, 965), pos_mouse);
+    ButtonType1 but1(font, (string)"Start", {250,70}, {450, 200}, Color(255, 255, 255, 965), pos_mouse, 1);
+    ButtonType1 but2(font, (string)"Finish game", { 250, 70 }, { 450, 300 }, Color(255, 255, 255, 965), pos_mouse, 1);
     but1.print(window);
     but2.print(window);
-
 
     if (mouse_pr == true && but1.isMouse(pos_mouse) == true) {
         window.close();
@@ -63,9 +66,9 @@ int Menu::choice(RenderWindow& window , Vector2i pos_mouse , bool mouse_pr) {
     }
 }
 
-void Menu::backscreen(RenderWindow& window) {
+void Menu::backscreen(RenderWindow& window, string file_name) {
     Texture herotexture;
-    herotexture.loadFromFile("resources\\images\\menu_back.jpg");
+    herotexture.loadFromFile("resources\\images\\" + file_name);
 
     Sprite herosprite;
     herosprite.setTexture(herotexture);

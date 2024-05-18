@@ -2,19 +2,23 @@
 #include "SFML/Graphics.hpp"
 #define TASK_H
 #include <iostream>
-#include "menu.h"
+#include "statistic.h"
 #include <vector>
 
 using namespace std;
 using namespace sf;
 
-class Task {
+class Task : public  Statistic {
     int state = 0;
     bool ans = true;
     int score = 0;
-    vector<string> answers;
     int right;
+    int chosen;
+    int sub_state;
+    int th_state;
+    int lv_num;
 public:
+    vector<string> answers;
     Task() {};
 
     Task(string t, string t1, string t2, string t3, string t4, int right) {
@@ -22,8 +26,10 @@ public:
         this->right = right;
     }
 
-    void virtual play(int type);
-    void backscreen(RenderWindow& window, int type) ;
+    void actions(RenderWindow& window, Vector2i pos_mouse, bool mouse_pr) override;
+
+    void choose_backscreen(RenderWindow& window, int type);
+
     int virtual variants(RenderWindow& window, Vector2i pos_mouse, bool mouse_pr, vector<string> ans, int right);
     void question(RenderWindow& window, vector<string> ans);
 
@@ -34,6 +40,18 @@ public:
         this->answers.push_back(t2);
         this->answers.push_back(t3);
         this->answers.push_back(t4);
+    }
+
+    void SetThemeState(int s) {
+        this->th_state = s;
+    }
+
+    void SetSubjectState(int s) {
+        this->sub_state = s;
+    }
+
+    void SetNum(int num) {
+        this->lv_num = num;
     }
 
     int getState() {
@@ -56,6 +74,16 @@ public:
         return this->ans;
     }
 
+    int GetRight() {
+        return this->right;
+    }
+
+    int GetChosen() {
+        return this->chosen;
+    }
+
+    
+
 };
 
-#endif MATHTASK_H
+#endif TASK_H

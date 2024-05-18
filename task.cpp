@@ -5,34 +5,22 @@
 using namespace sf;
 using namespace std;
 
-void Task::play(int type) {
-    RenderWindow window(VideoMode(1152, 896), "My window");
-    Vector2i pos_mouse;
+void Task::actions(RenderWindow& window, Vector2i pos_mouse, bool mouse_pr) {
+    choose_backscreen(window, this->getSubjectState());
+    variants(window, pos_mouse, mouse_pr, this->answers, this->right);
+    question(window, this->answers);
+}
 
-    while (window.isOpen())
-    {
-        bool mouse_pr = false;
-        Event event{};
-        while (window.pollEvent(event))
-        {
-
-            pos_mouse = Mouse::getPosition(window); //координаты мыши
-
-            if (event.type == Event::MouseButtonPressed) // проверка нажата ли кнопка мыши
-            {
-                Mouse::Button mouseButton = event.mouseButton.button;
-                mouse_pr = true;
-            }
-            //cout << pos_mouse.x << "-" << pos_mouse.y << endl;
-            if (event.type == Event::Closed)
-                window.close();
-
-        }
-
-        backscreen(window, type);
-        variants(window, pos_mouse, mouse_pr, this->answers, this->right);
-        question(window, this->answers);
-        window.display();
+//  выбор фона по предмету
+void Task::choose_backscreen(RenderWindow& window, int type) {
+    if (type == 0 || type == 1 || type == 2 || type == 3) {
+        this->backscreen(window, "russian_back.jpg");
+    }
+    else if (type == 4 || type == 5 || type == 6 || type == 7) {
+        this->backscreen(window, "english_back.jpg");
+    }
+    else {
+        this->backscreen(window, "math_back.jpg");
     }
 }
 
@@ -40,15 +28,16 @@ int Task::variants(RenderWindow& window, Vector2i pos_mouse, bool mouse_pr, vect
     Font font;
     font.loadFromFile("resources\\Lineyka.ttf");
 
-    Button menu(font, (string)"Return to menu", { 350,70 }, { 50, 10 }, Color(255, 255, 255, 965), pos_mouse);
+    ButtonType1 menu(font, (string)"Return to menu", { 350,70 }, { 50, 10 }, Color(255, 255, 255, 965), pos_mouse, 1);
     menu.print(window);
 
-    vector<Button> var;
+    vector<ButtonType1> var;
 
-    var.push_back({font, ans[1], {250, 70}, {300, 400}, Color(255, 255, 255, 965), pos_mouse });
-    var.push_back({ font, ans[2], {250, 70}, {300, 500}, Color(255, 255, 255, 965), pos_mouse });
-    var.push_back({ font, ans[3], {250, 70}, {600, 400}, Color(255, 255, 255, 965), pos_mouse });
-    var.push_back({ font, ans[4], {250, 70}, {600, 500}, Color(255, 255, 255, 965), pos_mouse });
+    // варианты ответа
+    var.push_back({font, ans[1], {250, 70}, {300, 400}, Color(255, 255, 255, 965), pos_mouse, 1 });
+    var.push_back({ font, ans[2], {250, 70}, {300, 500}, Color(255, 255, 255, 965), pos_mouse, 1 });
+    var.push_back({ font, ans[3], {250, 70}, {600, 400}, Color(255, 255, 255, 965), pos_mouse, 1 });
+    var.push_back({ font, ans[4], {250, 70}, {600, 500}, Color(255, 255, 255, 965), pos_mouse, 1 });
 
     var[0].print(window);
     var[1].print(window);
@@ -61,16 +50,22 @@ int Task::variants(RenderWindow& window, Vector2i pos_mouse, bool mouse_pr, vect
                 window.close();
                 this->score++;
                 this->ans = true;
-                this->state = 1; // переход на следующий уровень
+                this->GetDone()[this->sub_state * 15 + this->lv_num] = true;
+                this->GetResults()[this->sub_state * 15 + this->lv_num] = true;
+                this->state = 1; // правильный ответ
                 mouse_pr = false;
             }
-            else {
-                window.close();
-                this->score = 0;
+            else {      // неправльный ответ
                 this->ans = false;
-                this->state = 0; // табличка которая высвечивает результат при нажатии возвращает в меню
+                this->state = 0;
+                this->GetDone()[this->sub_state * 15 + this->lv_num] = true;
+                if (this->GetResults()[this->sub_state * 15 + this->lv_num] != true) {
+                    this->GetResults()[this->sub_state * 15 + this->lv_num] = false;
+                }
                 mouse_pr = false;
+                window.close();
             }
+            this->chosen = i;
         }
     }
 
@@ -101,7 +96,7 @@ void Task::question(RenderWindow& window, vector<string> ans) {  // когда второй
     Message quest(ans[0], false, 2);
     quest.setFont(font);
     float pos = 576 - quest.getTxt().getLocalBounds().width / 2;
-    quest.setPos({ pos,250 }); // должен быть по центру (само задание) | ИСПРАВЛЕНО
+    quest.setPos({ pos,250 });
     quest.print(window);
 
     Message sc((string)"Your score: " + to_string(this->score), false, 1);
@@ -110,23 +105,3 @@ void Task::question(RenderWindow& window, vector<string> ans) {  // когда второй
     sc.print(window);
 
 };
-
-void Task::backscreen(RenderWindow& window, int type) {
-    Texture herotexture;
-    if (type == 1) {
-        herotexture.loadFromFile("resources\\images\\russian_back.jpg");
-    }
-    else if (type == 2) {
-        herotexture.loadFromFile("resources\\images\\english_back.jpg");
-    }
-    else {
-        herotexture.loadFromFile("resources\\images\\math_back.jpg");
-    }
-
-    Sprite herosprite;
-    herosprite.setTexture(herotexture);
-    herosprite.setPosition(0, 0);
-
-    window.clear();
-    window.draw(herosprite);
-}

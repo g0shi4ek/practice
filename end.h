@@ -1,4 +1,4 @@
-#ifndef END_H // include guard
+#ifndef END_H
 #include "SFML/Graphics.hpp"
 #include "task.h"
 #define END_H
@@ -8,12 +8,9 @@
 using namespace std;
 using namespace sf;
 
-class Task;
-
-class End : public Task { // добавила наследование, чтобы функцию фона не копировать
+class End : public Task { 
     int numbers = 0;
     int all = 0;
-
 public:
     End() {};
 
@@ -21,13 +18,9 @@ public:
         this->numbers = sc; // кол-во решенных номеров
         this->all = al; // кол-во номеров всего
     }
+    void actions(RenderWindow& window, Vector2i pos_mouse, bool mouse_pr) override;
 
-    void play(int type);
-   // void backscreen(RenderWindow& window, int type);
-    void screen(RenderWindow& window, bool mouse_pr);
-
-
-
+    void final_screen(RenderWindow& window, bool mouse_pr, Vector2i pos_mouse);
 };
 
-#endif MATHTASK_H
+#endif END_H
