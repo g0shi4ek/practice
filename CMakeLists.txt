@@ -17,7 +17,7 @@ add_executable(practice main.cpp "menu.cpp" "menu.h"
         "typeLevel.cpp" 
         "typeLevel.h" 
         "task.cpp"
-        "task.h" "end.cpp" "end.h"  )
+        "task.h" "end.cpp" "end.h" "statistic.cpp" "statistic.h" "check.cpp" "check.h")
 
 
 add_custom_command(TARGET practice POST_BUILD

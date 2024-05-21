@@ -7,7 +7,9 @@
   },
   "ExpandedNodes": [
     "",
-    "\\out"
+    "\\out",
+    "\\resources\\images"
   ],
+  "SelectedNode": "\\resources",
   "PreviewInSolutionExplorer": false
 }

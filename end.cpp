@@ -7,36 +7,13 @@
 using namespace sf;
 using namespace std;
 
-void End::play(int type) {
-    RenderWindow window(VideoMode(1152, 896), "My window");
-    Vector2i pos_mouse;
-
-    while (window.isOpen())
-    {
-        bool mouse_pr = false;
-        Event event{};
-        while (window.pollEvent(event))
-        {
-            pos_mouse = Mouse::getPosition(window); //координаты мыши
-
-            if (event.type == Event::MouseButtonPressed) // проверка нажата ли кнопка мыши
-            {
-                Mouse::Button mouseButton = event.mouseButton.button;
-                mouse_pr = true;
-            }
-            if (event.type == Event::Closed)
-                window.close();
-
-        }
-
-        //window.clear(Color::Red);
-        backscreen(window, type);
-        screen(window, mouse_pr);
-        window.display();
-    }
+void End::actions(RenderWindow& window, Vector2i pos_mouse, bool mouse_pr) {
+    choose_backscreen(window, this->getSubjectState());
+    final_screen(window, mouse_pr, pos_mouse);
 }
 
-void End::screen(RenderWindow&window, bool mouse_pr) {
+// пока не получается оптимально (из класса statistic) добавить сюда кружочки с прогрессом 
+void End::final_screen(RenderWindow&window, bool mouse_pr, Vector2i pos_mouse) {
     Font font;
     font.loadFromFile("resources\\Lineyka.ttf");
 
@@ -51,12 +28,13 @@ void End::screen(RenderWindow&window, bool mouse_pr) {
     sc.setPos({ 576 - sc.getTxt().getGlobalBounds().width / 2,350});
     sc.print(window);
 
+    // цвета для мигающей надписи
     vector<Color> colors = { Color(196, 255, 0), Color(149, 255, 41), Color(49, 255, 96), Color(48, 255, 166), Color(48, 255, 221), Color(48, 255, 242), Color(48, 221, 255), Color(48, 180, 255), Color(48, 104, 255), Color(97, 48, 255), Color(135, 74, 255), Color(177, 74, 255), Color(245, 92, 255), Color(255, 78, 209), Color(255, 60, 151), Color(255, 60, 99)};
 
     srand(time(0));
     int n_color = (rand() % 16);
 
-    if (this->numbers == this->all) {
+    if (this->numbers >= this->all * 0.7) {
         Text good;
         good.setString("ladno, sharish");
         good.setCharacterSize(75);
@@ -76,6 +54,7 @@ void End::screen(RenderWindow&window, bool mouse_pr) {
         bad.setPosition({ 576 - bad.getLocalBounds().width / 2, 225 });
         window.draw(bad);
     }
+
     if (mouse_pr == true) {
         window.close(); // возвращает в меню
         mouse_pr = false;

@@ -1,7 +1,10 @@
 ﻿#include <SFML/Graphics.hpp>
+#include <ctime>
 #include "menu.h"
 #include "typeLevel.h"
+#include "statistic.h"
 #include "task.h"
+#include "check.h"
 #include "end.h"
 
 
@@ -9,39 +12,76 @@
 using namespace sf;
 using namespace std;
 
+// добавила наследования. в итоге функции play и backscreen определяются только в классе Menu
+// TypeLevel наследуется от Menu
+// Statistic от TypeLevel
+// Task от Statistic
+// End наследуется от Task
 
-int lev_process(vector<Task>& vec, int type) { 
+
+int lev_process(vector<Task>& vec, int sub_st) { 
+    
     int num = 0; // уровень
-    int st = 0; // продолжаем игру или нет
-    vec[num].setScore(0);
-    while (num < vec.size()) {
-        vec[num].play(type);
-        if (vec[num].getState() == 2) { // возврат в меню
-            st = 1;
-            break;
-        }
-        else if (vec[num].getState() == 1) { // ответ правильный => на следующий уровень
-            num++;
-            if (num < vec.size()) {
-                vec[num].setScore(num);
-            }
-            else {
-                End ending(num, vec.size());
-                ending.play(type);
+    int st = 0; // счёт
+    int score = 0;// продолжаем игру или нет
+
+    Statistic stat;
+    
+    stat.SetSubState(sub_st);
+    stat.play();
+    if (stat.GetStatState() == 1) {
+        vec[num].setScore(0);
+        vec[num].SetNum(num);
+        while (num < vec.size()) {
+            Check check;
+            check.SetAnswers(vec[num].answers[0], vec[num].answers[1], vec[num].answers[2], vec[num].answers[3], vec[num].answers[4]);
+            check.SetSubStateCheck(sub_st);
+            check.SetRightAns(vec[num].GetRight());
+
+            vec[num].SetSubjectState(sub_st);
+            vec[num].SetNum(num);
+            vec[num].play();
+            check.SetChosenAns(vec[num].GetChosen());
+            if (vec[num].getState() == 2) { // возврат в меню task
+                stat.WriteStatistic();
                 st = 1;
                 break;
             }
-        }
-        else if (vec[num].getState() == 0) { // ответ неправильный => окно с результатом 
-            End ending(num, vec.size());
-            ending.play(type);
-            num = 0;
-            st = 1;
-            break;
+            else { // уровень пройден (нажатие на ответ)
+                if (vec[num].getState() == 1) {     // правильный ответ = увеличение счёта, просмотр страницы с отмеченным прав ответом и переход на след уровень
+                    score++;
+                    vec[num].setScore(score);
+                }
+                      // просмотр страницы с прав ответом, переход на след уровень
+                check.play();
+                if (check.GetCheckState() == 1) {
+                    num++;
+                    if (num >= vec.size()) {  // вопросы закончились (отвечены все 15)
+                        End ending(score, vec.size());
+                        stat.WriteStatistic();
+                        ending.play();
+                        st = 1;
+                        break;
+                    }
+                }
+                else {      // возврат в меню из check
+                    stat.WriteStatistic();
+                    st = 1;
+                    break;
+                }
+            }
         }
     }
+    else {      // возврат в меню из statistic
+        st = 1;
+    }
+
     return st;
 }
+
+// объявление статических переменных
+bool Statistic::done_[12 * 15];   // список заданий по выполнению
+bool Statistic::results_[12 * 15]; // список по правильности ответов
 
 int main() { // мб сделать классом game но хз как
 #ifdef WIN32
@@ -70,26 +110,54 @@ int main() { // мб сделать классом game но хз как
     engl.push_back({ "vugi", "oshrg", "bodthh", "srhs", "srhs", 1 });
 
     while (st == 1) {
-        Menu start;
+        Menu start;     // открытие меню
+        start.play();
         st = 0;
-        if (start.getState() == 1) { // переключение на выбор раздела тут косяк почему-то только со второго нажатия переключает | ИСПРАВЛЕНО (убрала наследование)
-            TypeLevel type;
-            if (type.getState() == 1) {
-                st = lev_process(rus, 1); // раздел русского
+        if (start.getState() == 1) {
+            TypeLevel type; // открытие выбора темы
+            type.play();
+
+            if (type.getSubjectState() == 0) {                          // тема - словарные слова
+                st = lev_process(rus, type.getSubjectState());
             }
-            if (type.getState() == 2) {
-                st = lev_process(engl, 2);
+            else if (type.getSubjectState() == 1) {
+                st = lev_process(rus, type.getSubjectState());
+            }
+            else if (type.getSubjectState() == 2) {
+                st = lev_process(rus, type.getSubjectState());
+            }
+            else if (type.getSubjectState() == 3) {
+                st = lev_process(rus, type.getSubjectState());
+            }
+            else if (type.getSubjectState() == 4) {
+                st = lev_process(engl, type.getSubjectState());
+            }
+            else if (type.getSubjectState() == 5) {
+                st = lev_process(engl, type.getSubjectState());
+            }
+            else if (type.getSubjectState() == 6) {
+                st = lev_process(engl, type.getSubjectState());
+            }
+            else if (type.getSubjectState() == 7) {
+                st = lev_process(engl, type.getSubjectState());
+            }
+            else if (type.getSubjectState() == 8) {
+                st = lev_process(math, type.getSubjectState());
+            }
+            else if (type.getSubjectState() == 9) {
+                st = lev_process(math, type.getSubjectState());
+            }
+            else if (type.getSubjectState() == 10) {
+                st = lev_process(math, type.getSubjectState());
+            }
+            else if (type.getSubjectState() == 11) {
+                st = lev_process(math, type.getSubjectState());
+            }
+            else if (type.getSubjectState() == 12) {
+                st = 1; // return to menu
             }
 
-            if (type.getState() == 3) {
-                st = lev_process(math, 3);
-            }
-
-            if (type.getState() == 4) {
-                st = 1;
-            }
         }
     }
-
     return 0;
 }

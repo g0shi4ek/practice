@@ -15,7 +15,7 @@ Message::Message(string& t, bool f, int ms_type) {
         txt.setCharacterSize(60);
         txt.setStyle(Text::Bold);
         txt.setOutlineColor(Color(216, 237, 255));
-        txt.setOutlineThickness(1);
+        txt.setOutlineThickness(2);
         flag = f;
     }
 }
@@ -36,30 +36,30 @@ Text Message::getTxt() {
     return this->txt;
 }
 
-Button::Button(Font& font, string& t, Vector2f size_btn, Vector2f pos_btn, Color bgcolor, Vector2i pos_mouse) {
+// кнопки первого типа - прямоугольные
+ButtonType1::ButtonType1(Font& font, string& t, Vector2f size_btn, Vector2f pos_btn, Color bgcolor, Vector2i pos_mouse, int type) {
     btn.setSize(size_btn);
     btn.setPosition(pos_btn);
     btn.setFillColor(bgcolor);
 
-    Message elem(t, isMouse(pos_mouse), 1);
+    Message elem(t, isMouse(pos_mouse), type);
     elem.setFont(font);
     setPostext(size_btn, pos_btn, elem);
     text = elem;
 }
 
-void Button::setPostext(Vector2f size_btn, Vector2f pos_btn, Message& el) { //для того чтобы текст был посередине мб надо поменять
+void ButtonType1::setPostext(Vector2f size_btn, Vector2f pos_btn, Message& el) { //для того чтобы текст был посередине мб надо поменять
     float xPos = (pos_btn.x + btn.getLocalBounds().width / 2) - (el.getTxt().getLocalBounds().width / 2);
     float yPos = (pos_btn.y + btn.getLocalBounds().height / 2) - (el.getTxt().getLocalBounds().height / 1.5);
 
     el.setPos({ xPos,yPos });
 }
 
-void Button::setBgcolor(Color bgcolor) {
+void ButtonType1::setBgcolor(Color bgcolor) {
     btn.setFillColor(bgcolor);
 }
 
-bool Button::isMouse(Vector2i mouse_pos) {
-
+bool ButtonType1::isMouse(Vector2i mouse_pos) {
     float btn_x1 = btn.getPosition().x; //начальные координаты кнопки 
     float btn_y1 = btn.getPosition().y;
 
@@ -73,7 +73,31 @@ bool Button::isMouse(Vector2i mouse_pos) {
     return false;
 }
 
-void Button::print(RenderWindow& window) {
+void ButtonType1::print(RenderWindow& window) {
+    window.draw(btn);
+    window.draw(text.getTxt());
+}
+
+// кнопки второго типа - круглые, НО почему-то тут не особо работает наследование и круглые кнопки не меняют цвет при наведении курсора 
+ButtonType2::ButtonType2(Font& font, string& t, float radius, Vector2f pos_btn, Color bgcolor, Vector2i pos_mouse) {
+    btn.setRadius(radius);
+    btn.setPosition(pos_btn);
+    btn.setFillColor(bgcolor);
+
+    Message elem(t, isMouse(pos_mouse), 1);
+    elem.setFont(font);
+    this->SetPosText(radius, pos_btn, elem);
+    text = elem;
+}
+
+void ButtonType2::SetPosText(float radius, Vector2f pos_btn, Message& el) {
+    float xPos = (pos_btn.x + radius) - (el.getTxt().getLocalBounds().width / 2) - 5;
+    float yPos = (pos_btn.y + radius) - (el.getTxt().getLocalBounds().height / 2) - 10;
+
+    el.setPos({ xPos,yPos });
+}
+
+void ButtonType2::print(RenderWindow& window) {
     window.draw(btn);
     window.draw(text.getTxt());
 }
