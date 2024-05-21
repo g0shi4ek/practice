@@ -10,6 +10,7 @@ class Check : public Task {
     int check_state;
     int right_ans;
     int chosen_ans;
+    int score;
 public:
     void SetAnswers(string a, string a1, string a2, string a3, string a4) {
         this->answ.push_back(a);

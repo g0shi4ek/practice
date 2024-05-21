@@ -11,7 +11,7 @@ using namespace sf;
 class Task : public  Statistic {
     int state = 0;
     bool ans = true;
-    int score = 0;
+    int score =0 ;
     int right;
     int chosen;
     int sub_state;
@@ -76,6 +76,10 @@ public:
 
     int GetRight() {
         return this->right;
+    }
+
+    void setRight(int s) {
+        this->right = s;
     }
 
     int GetChosen() {

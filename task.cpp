@@ -80,8 +80,7 @@ int Task::variants(RenderWindow& window, Vector2i pos_mouse, bool mouse_pr, vect
 }
 
 
-void Task::question(RenderWindow& window, vector<string> ans) {  // когда второй раз запускаешь один и тот же предмет не закрывая программу почему-то score =1 
-                                                                             // | вроде нет такой проблемы 
+void Task::question(RenderWindow& window, vector<string> ans) { 
     Font font;
     font.loadFromFile("resources\\Lineyka.ttf");
 
@@ -99,9 +98,9 @@ void Task::question(RenderWindow& window, vector<string> ans) {  // когда второй
     quest.setPos({ pos,250 });
     quest.print(window);
 
-    Message sc((string)"Your score: " + to_string(this->score), false, 1);
+    /*Message sc((string)"Your score: " + to_string(this->score), false, 1);
     sc.setFont(font);
     sc.setPos({ 700,50 }); 
-    sc.print(window);
+    sc.print(window);*/
 
 };

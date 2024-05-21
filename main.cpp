@@ -63,6 +63,7 @@ int lev_process(vector<Task>& vec, int sub_st) {
                         st = 1;
                         break;
                     }
+                    
                 }
                 else {      // возврат в меню из check
                     stat.WriteStatistic();
