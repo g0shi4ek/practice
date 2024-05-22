@@ -19,6 +19,8 @@ class Task : public  Statistic {
     int lv_num;
 public:
     vector<string> answers;
+    vector<string> questions;
+    vector<int> rightAnswers;
     Task() {};
 
     Task(string t, string t1, string t2, string t3, string t4, int right) {
@@ -82,6 +84,7 @@ public:
         return this->chosen;
     }
 
+    void loadFromFile(string theme);
     
 
 };

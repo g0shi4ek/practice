@@ -5,6 +5,7 @@
 #include <ctime>
 #include "typeLevel.h"
 
+
 class Statistic : public TypeLevel {
 	int sub_state;
 	int stat_state = 0;

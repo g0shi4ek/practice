@@ -1,0 +1,15 @@
+begat';walk;sleep;run;stand;3
+pit';drink;cook;clean;dance;1
+gulyat';fly;cry;eat;walk;4
+prygat';jump;go;build;catch;1
+igrat';give;play;drive;lift;2
+chitat';read;skate;look;cook;1
+pisat';wash;draw;write;paint;3
+myt';work;wash;give;walk;2
+spat';sleep;call;swim;buy;1
+tancevat';play;write;sing;dance;4
+rabotat';walk;work;close;eat;2
+govorit';talk;dream;cry;cut;1
+plavat';catch;cook;swim;jump;3
+pet';lock;ride;sing;see;3
+letat';take;open;fly;ask;3

@@ -1,0 +1,15 @@
+NEvernym udareniem;aeroportY;bAnty;dosUg;nEdrug;1
+NEvernym udareniem;cepOchka;zvonIt;vruchIt;tortY;4
+NEvernym udareniem;tamOzhnya;sharfY;uglubIt';sorIt;2
+NEvernym udareniem;poslalA;klAla;mozaIchnyj;cemEnt;1
+NEvernym udareniem;stAtuya;krasIvee;kuhOnnyj;zakUporit';3
+VERNYM udareniem;gnAla;zAperla;chErpat';prinudIt';3
+NEvernym udareniem;desheviznA;bAnty;kvartAl;eretIk;1
+NEvernym udareniem;sirOty;krasIvee;tortY;srEdstva;3
+VERNYM udareniem;stolYAr;sIroty;kranY;iksY;1
+NEvernym udareniem;znAchimost';dispAnser;buhgAlterov;dosUg;2
+NEvernym udareniem;vernA;cemEnt;vodoprOvod;optOvyj;3
+NEvernym udareniem;pArter;kUhonnyj;vlilAs';lilA;1
+NEvernym udareniem;obodrIt';ubystrIt';nEnavist';krasivEe;4
+NEvernym udareniem;nOgtya;zhdAla;lEktory;Iksy;2
+VERNYM udareniem;ischerpAt';klalA;svErlit;katalOg;4

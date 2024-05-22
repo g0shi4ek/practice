@@ -46,7 +46,7 @@ void End::final_screen(RenderWindow&window, bool mouse_pr, Vector2i pos_mouse) {
     }
     else {
         Text bad;
-        bad.setString("NATASHA LOH");
+        bad.setString("LOH HAHAHA");
         bad.setCharacterSize(75);
         bad.setFont(font);
         bad.setStyle(Text::Bold);

@@ -1,0 +1,15 @@
+uchitel';cook;vet;teacher;tailor;3
+voditel;driver;pilot;postman;engineer;1
+pevec;doctor;farmer;policeman;singer;4
+akter;builder;actor;artist;cook;2
+doktor;cleaner;vet;doctor;police;3
+inzhener;engineer;farmer;builder;postman;1
+perevodchik;translator;waiter;pilot;student;1
+sportsmen;dentist;fireman;clown;sportsman;4
+povar;artist;builder;cook;postman;3
+policejskij;policeman;waiter;clown;engineer;1
+pilot;postman;driver;pilot;singer;3
+pochtal'on;manager;teacher;cleaner;postman;4
+fermer;vet;tailor;dentist;farmer;4
+stroitel';singer;builder;translator;waiter;2
+oficiant;waiter;student;cleaner;sportsman;1

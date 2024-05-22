@@ -1,0 +1,15 @@
+KRASIVO;sushchestvitel'no;prilagatel'noe;narechie;glagol;3
+HODIL;glagol;mestoimenie;prilagatel'noe;sushchestvitel'noe;1
+PEJZAZH;predlog;narechie;sushchestvitel'noe;mestoimenie;3
+METRO;narechie;sushchestvitel'noe;glagol;predlog;2
+VPRAVO;prilagatel'noe;narechie;glagol;predlog;2
+VESLO;sushchestvitel'noe;narechie;prilagatel'noe;glagol;1
+ZERKAL'NYJ;glagol;mestoimenie;sushchestvitel'noe;prilagatel'noe;4
+ON;mestoimenie;predlog;soyuz;narechie;1
+IZ-ZA;mestoimenie;narechie;predlog;soyuz;3
+ILI;predlog;soyuz;mestoimenie;narechie;2
+OCHKI;soyuz;predlog;glagol;sushchestvitel'noe;4
+EE;prilagatel'noe;mestoimenie;sushchestvitel'noe;soyuz;2
+PLYT';glagol;mestoimenie;soyuz;narechie;1
+SPAL'NYJ;narechie;sushchestvitel'noe;prilagatel'noe;glagol;3
+DEN';sushchestvitel'noe;predlog;soyuz;mestoimenie;1

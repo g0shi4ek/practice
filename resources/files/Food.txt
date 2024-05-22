@@ -1,0 +1,15 @@
+yabloko;apple;pear;orange;carrot;1
+limon;orange;lemon;tomato;apple;2
+tort;candy;cookies;chocolate;cake;4
+ryba;meat;fish;egg;chicken;2
+med;sugar;sweet;honey;pear;3
+syr;cheese;egg;carrot;cucumber;1
+sok;milk;water;juice;tea;3
+myaso;meat;tomato;fish;potato;1
+ovoshchi;fruits;mushrooms;banana;vegetables;4
+pechen'e;chocolate;sweet;cooki;cake;3
+yajco;chicken;egg;butter;bread;2
+shokolad;cooki;cake;chocolate;carrot;3
+maslo;butter;bread;potato;salt;1
+morkov';cucumber;carrot;tomato;pear;2
+ogurec;potato;lemon;cucumber;apple;3

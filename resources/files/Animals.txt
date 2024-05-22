@@ -1,0 +1,15 @@
+korova;dog;fox;cow;snake;3
+koshka;monkey;frog;bird;cat;4
+kurica;hen;tiger;horse;lion;1
+svin'ya;rabbit;pig;sheep;bear;2
+sobaka;dog;duck;wolf;zebra;1
+zebra;elephant;shark;zebra;dolphin;3
+medved'; fish; mouse; bear; sheep;3
+slon; elephant;  giraffe; monkey;  rabbit; 1
+loshad'; camel;  horse; cow; pig; 2
+obez'yana; turtle; hen; monkey; mouse; 3
+lyagushka; frog; shark; duck; fox; 1
+tigr; lion; tiger; parrot; bird; 2
+lisa; cow; fox; frog; snake; 2
+krokodil ; dolphin; butterflu; crocodile; elephant; 3
+akula; snake;  goose; sheep; shark; 4

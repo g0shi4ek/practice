@@ -1,0 +1,15 @@
+VERNO;avtob;baloto;garoh;akord;1
+NEverno;almaz;aleya;kaban;pal'to;2
+NEverno;ryukzak;samolet;senica;sekret;3
+VERNO;subota;tapor;kochan;karzina;3
+VERNO;vogon;rimen';rajon;parashut;3
+NEverno;odinadcat';posuda;topor;yunyj;1
+NEverno;signal;yashchereca;ryabina;zdes';2
+NEverno;zhyuri;derizher;karandash;odezhda;2
+NEverno;pesok;kotleta;zayac;pamidor;4
+VERNO;zhuzhat';trollebus;eskalator;hokej;3
+NEverno;fanar';uzhin;svoboda;peschanyj;1
+NEverno;pingvin;agurec;oblako;solnce;2
+NEverno;gazeta;zhilet;aramat;koleso;3
+VERNO;kostryulya;pasuda;raketa;preroda;3
+NEverno;saroka;finish;stolica;kapusta;1

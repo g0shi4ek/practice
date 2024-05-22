@@ -1,0 +1,15 @@
+risuyu KARANDASHOM;tvoritel'nyj;predlozhnyj;vinitel'nyj;roditel'nyj;1
+zhivu v DEREVNE;roditel'nyj;predlozhnyj;vinitel'nyj;imenitel'nyj;2
+vzyal IGRUSHKU;datel'nyj;vinitel'nyj;imenitel'nyj;roditel'nyj;2
+govoryu o PRIRODE;tvoritel'nyj;datel'nyj;roditel'nyj;predlozhnyj;4
+vizhu PTICU;vinitel'nyj;imenitel'nyj;roditel'nyj;tvoritel'nyj;1
+net IDEJ;vinitel'nyj;datel'nyj;predlozhnyj;roditell'nyj;4
+osmatrivat' MESTNOST';vinitel'nyj;imenitel'nyj;predlozhnyj;tvoritlel'nyj;1
+vojti v KOMNATU;datel'nyj;predlozhnyj;vinitel'nyj;roditel'nyj;3
+dumat' o KANIKULAH;roditel'nyj;datel'nyj;imenitel'nyj;predlozhnyj;4
+upravlyat' MASHINOJ;tvoritel'nyj;predlozhnyj;datel'nyj;vinitel'nyj;1
+podarit' DRUGU;roditel'nyj;imenitel'nyj;datel'nyj;vinitel'nyj;3
+smotret' FIL'M;vinitel'nyj;imenitel'nyj;tvoritel'nyj;predlozhnyj;1
+chitat' KNIGU;imenitel'nyj;datel'nyj;predlozhnyj;vinitel'nyj;4
+gulyat' pod DOZHDEM;tvoritel'nyj;roditel'nyj;datel'nyj;imenitel'nyj;1
+provodit' DRUGA;vinitel'nyj;tvoritel'nyj;predlozhnyj;roditel'nyj;1

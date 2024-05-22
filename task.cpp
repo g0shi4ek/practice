@@ -1,6 +1,8 @@
 #include "SFML/Graphics.hpp"
 #include "task.h"
 #include "buttons.h"
+#include <fstream>
+#include <sstream>
 
 using namespace sf;
 using namespace std;
@@ -34,10 +36,10 @@ int Task::variants(RenderWindow& window, Vector2i pos_mouse, bool mouse_pr, vect
     vector<ButtonType1> var;
 
     // варианты ответа
-    var.push_back({font, ans[1], {250, 70}, {300, 400}, Color(255, 255, 255, 965), pos_mouse, 1 });
-    var.push_back({ font, ans[2], {250, 70}, {300, 500}, Color(255, 255, 255, 965), pos_mouse, 1 });
-    var.push_back({ font, ans[3], {250, 70}, {600, 400}, Color(255, 255, 255, 965), pos_mouse, 1 });
-    var.push_back({ font, ans[4], {250, 70}, {600, 500}, Color(255, 255, 255, 965), pos_mouse, 1 });
+    var.push_back({font, ans[1], {350, 70}, {250, 400}, Color(255, 255, 255, 965), pos_mouse, 1 });
+    var.push_back({ font, ans[2], {350, 70}, {250, 500}, Color(255, 255, 255, 965), pos_mouse, 1 });
+    var.push_back({ font, ans[3], {350, 70}, {650, 400}, Color(255, 255, 255, 965), pos_mouse, 1 });
+    var.push_back({ font, ans[4], {350, 70}, {650, 500}, Color(255, 255, 255, 965), pos_mouse, 1 });
 
     var[0].print(window);
     var[1].print(window);
@@ -99,9 +101,11 @@ void Task::question(RenderWindow& window, vector<string> ans) {  // когда второй
     quest.setPos({ pos,250 });
     quest.print(window);
 
-    Message sc((string)"Your score: " + to_string(this->score), false, 1);
+    /*Message sc((string)"Your score: " + to_string(this->score), false, 1);
     sc.setFont(font);
     sc.setPos({ 700,50 }); 
-    sc.print(window);
+    sc.print(window);*/
 
 };
+
+

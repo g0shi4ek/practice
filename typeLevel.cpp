@@ -24,7 +24,7 @@ int TypeLevel::choice(RenderWindow& window, Vector2i pos_mouse, bool mouse_pr) {
     t3.print(window);
 
     // кнопки с темами
-    vector <string> opts = { "Slovarnie slova", "Udareniya", "Chasti rechi", "Pod sushestv", "Animals", "Food", "Actions", "Furniture", "+", "-", "*", "|" };
+    vector <string> opts = { "Slovarnie slova", "Udareniya", "Chasti rechi", "Pod sushestv", "Animals", "Food", "Actions", "Professions", "+", "-", "*", "|" };
     vector<ButtonType1> btns;
 
     float x = -290;

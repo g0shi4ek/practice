@@ -79,6 +79,47 @@ int lev_process(vector<Task>& vec, int sub_st) {
     return st;
 }
 
+void loadFromFile(string filename, vector<Task>& array) {
+    fstream f;
+    f.open(filename);
+    if (!f.is_open()) {
+        cout << "Error opening file: " << filename << endl;
+        return;
+    }
+
+    
+    string line;
+    string word = "";
+    if (array.size() == 0) {
+        for (int i = 0; i < 15; i++) {
+            vector <string> ans;
+            getline(f, line);
+            int j = 0;
+            while (line[j] != NULL) {
+                if (line[j] == ';' ) {
+                    ans.push_back(word);
+                    word = "";
+                }
+                else if (j == line.size() - 1) {
+                    word += line[j];
+                    ans.push_back(word);
+                    word = "";
+                }
+                else {
+                    word += line[j];
+                }
+                j++;
+            }
+            Task new_el({ ans[0], ans[1], ans[2], ans[3], ans[4], stoi(ans[5]) });
+            array.push_back(new_el);
+        }
+    }
+
+    
+
+    f.close();
+}
+
 // объявление статических переменных
 bool Statistic::done_[12 * 15];   // список заданий по выполнению
 bool Statistic::results_[12 * 15]; // список по правильности ответов
@@ -90,24 +131,21 @@ int main() { // мб сделать классом game но хз как
     setlocale(LC_ALL, "Russian");
 #endif
     string rus_themes[4] = { "Udareniya", "Slovarnie slova", "Morfemi", "Chasti rechi"};
-    string eng_themes[4] = { "Animals", "Food", "Actions", "Furniture?"};
+    string eng_themes[4] = { "Animals", "Food", "Actions", "Professions"};
     string math_themes[4] = { "+", "-", "*", "/" };
 
     int st = 1;
-    vector<Task> math; // наверное стоит перенести либо в текстовый файл и от туда брать либо в отдельную функцию
-    math.push_back({"100/50 = ?", "20", "2", "4", "25", 2 });
-    math.push_back({ "42/7 = ?", "5", "7", "6", "1", 3 });
-    math.push_back({ "3645/5 = ?", "729", "855", "467", "1123", 1 });
-    math.push_back({ "4/2 = ?", "1", "2", "5", "3", 2 });
 
-    vector<Task> rus;
-    rus.push_back({ "rabbit", "biirg", "rhsrg", "srh", "ojo", 1}); // короче тут суть в том что 1 - задание потом 4 варианта ответа и последнее номер отета который правильный
-    rus.push_back({ "vugi", "oshrg", "bodthh", "srhs", "srhs", 1});
-    
+    string themes[12] = { "Slovarnie slova", "Udareniya", "Chasti rechi", "Pod sushestv", "Animals", "Food", "Actions", "Professions", "+", "-", "math_x", "math_del" };
+    /*string filename;
+    vector<vector<Task>> data[12];
 
-    vector<Task> engl; 
-    engl.push_back({ "rabbit", "biirg", "rhsrg", "srh", "ojo", 1 });
-    engl.push_back({ "vugi", "oshrg", "bodthh", "srhs", "srhs", 1 });
+    for (int i = 0; i < 12; i++) {
+        filename = "resources\\files\\" + themes[i] + ".txt";
+        
+
+    }*/
+
 
     while (st == 1) {
         Menu start;     // открытие меню
@@ -118,40 +156,64 @@ int main() { // мб сделать классом game но хз как
             type.play();
 
             if (type.getSubjectState() == 0) {                          // тема - словарные слова
-                st = lev_process(rus, type.getSubjectState());
+                vector<Task> v1;
+                loadFromFile("resources\\files\\" + themes[type.getSubjectState()] + ".txt", v1);
+                st = lev_process(v1, type.getSubjectState());
             }
             else if (type.getSubjectState() == 1) {
-                st = lev_process(rus, type.getSubjectState());
+                vector<Task> v2;
+                loadFromFile("resources\\files\\" + themes[type.getSubjectState()] + ".txt", v2);
+                st = lev_process(v2, type.getSubjectState());
             }
             else if (type.getSubjectState() == 2) {
-                st = lev_process(rus, type.getSubjectState());
+                vector<Task> v3;
+                loadFromFile("resources\\files\\" + themes[type.getSubjectState()] + ".txt", v3);
+                st = lev_process(v3, type.getSubjectState());
             }
             else if (type.getSubjectState() == 3) {
-                st = lev_process(rus, type.getSubjectState());
+                vector<Task> v4;
+                loadFromFile("resources\\files\\" + themes[type.getSubjectState()] + ".txt", v4);
+                st = lev_process(v4, type.getSubjectState());
             }
             else if (type.getSubjectState() == 4) {
-                st = lev_process(engl, type.getSubjectState());
+                vector<Task> v5;
+                loadFromFile("resources\\files\\" + themes[type.getSubjectState()] + ".txt", v5);
+                st = lev_process(v5, type.getSubjectState());
             }
             else if (type.getSubjectState() == 5) {
-                st = lev_process(engl, type.getSubjectState());
+                vector<Task> v6;
+                loadFromFile("resources\\files\\" + themes[type.getSubjectState()] + ".txt", v6);
+                st = lev_process(v6, type.getSubjectState());
             }
             else if (type.getSubjectState() == 6) {
-                st = lev_process(engl, type.getSubjectState());
+                vector<Task> v7;
+                loadFromFile("resources\\files\\" + themes[type.getSubjectState()] + ".txt", v7);
+                st = lev_process(v7, type.getSubjectState());
             }
             else if (type.getSubjectState() == 7) {
-                st = lev_process(engl, type.getSubjectState());
+                vector<Task> v8;
+                loadFromFile("resources\\files\\" + themes[type.getSubjectState()] + ".txt", v8);
+                st = lev_process(v8, type.getSubjectState());
             }
             else if (type.getSubjectState() == 8) {
-                st = lev_process(math, type.getSubjectState());
+                vector<Task> v9;
+                loadFromFile("resources\\files\\" + themes[type.getSubjectState()] + ".txt", v9);
+                st = lev_process(v9, type.getSubjectState());
             }
             else if (type.getSubjectState() == 9) {
-                st = lev_process(math, type.getSubjectState());
+                vector<Task> v10;
+                loadFromFile("resources\\files\\" + themes[type.getSubjectState()] + ".txt", v10);
+                st = lev_process(v10, type.getSubjectState());
             }
             else if (type.getSubjectState() == 10) {
-                st = lev_process(math, type.getSubjectState());
+                vector<Task> v11;
+                loadFromFile("resources\\files\\" + themes[type.getSubjectState()] + ".txt", v11);
+                st = lev_process(v11, type.getSubjectState());
             }
             else if (type.getSubjectState() == 11) {
-                st = lev_process(math, type.getSubjectState());
+                vector<Task> v12;
+                loadFromFile("resources\\files\\" + themes[type.getSubjectState()] + ".txt", v12);
+                st = lev_process(v12, type.getSubjectState());
             }
             else if (type.getSubjectState() == 12) {
                 st = 1; // return to menu
